@@ -1,1 +1,108 @@
-/* You can add global styles to this file, and also import other style files */
+@import "primeng/resources/themes/lara-light-blue/theme.css";
+@import "primeng/resources/primeng.css";
+
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+html {
+    font-family: sans-serif;
+    line-height: 1.15;
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+    -ms-overflow-style: scrollbar;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+
+body {
+    scroll-behavior: smooth;
+    margin: 0;
+    font-family: "Source Sans Pro", "Segoe UI", "Helvetica Neue", "Arial";
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.6;
+    color: #212529;
+    text-align: left;
+    background-color: #fff;
+
+    &::-webkit-scrollbar-track {
+        -webkit-box-shadow: rgba(17, 12, 46, 0.15) 0px 48px 100px 0px;
+        background-color: #F5F5F5;
+        border-radius: 10px;
+    }
+
+    &::-webkit-scrollbar {
+        width: 10px;
+        background-color: #F5F5F5;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        border-radius: 10px;
+        background-image: -webkit-gradient(linear,
+                left bottom,
+                left top,
+                color-stop(0.44, rgb(153, 180, 234)),
+                color-stop(0.72, rgb(95, 146, 208)),
+                color-stop(0.86, rgb(51, 86, 190)));
+    }
+}
+
+.container {
+    width: 100%;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+@media (min-width: 576px) {
+    .container {
+        max-width: 540px;
+    }
+}
+
+@media (min-width: 768px) {
+    .container {
+        max-width: 720px;
+    }
+}
+
+@media (min-width: 992px) {
+    .container {
+        max-width: 960px;
+    }
+}
+
+@media (min-width: 1200px) {
+    .container {
+        max-width: 1140px;
+    }
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+body,
+button,
+input,
+select,
+optgroup,
+textarea {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 21px;
+    color: var(--main-text)
+}
+
+
+img {
+    width: 100%;
+    height: auto;
+}
