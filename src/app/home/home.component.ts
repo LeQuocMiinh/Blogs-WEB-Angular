@@ -8,7 +8,8 @@ import { HomeService } from './home.service';
   providers: [HomeService]
 })
 export class HomeComponent {
-  posts: any;
+  posts: any[] = [];
+  recentPosts: any[] = [];
   imageDefault = 'assets/img/default.jpg';
   constructor(
     private homeService: HomeService
@@ -17,12 +18,26 @@ export class HomeComponent {
   }
 
   async ngOnInit() {
+    await this.getRecentPosts();
     await this.getPostByFilter();
-    console.log(this.posts);
   }
 
+  /**
+   * Lấy tất cả bài viết
+   */
   async getPostByFilter() {
-    const res: any = await this.homeService.getAllPost();
+    const params = { deleted: true };
+    const res: any = await this.homeService.getAllPosts(params);
     this.posts = res.data;
   }
+
+  /**
+   * Lấy bài viết mới nhất
+   */
+  async getRecentPosts() {
+    const params = { nums: 4 };
+    const res: any = await this.homeService.getRecentPosts(params);
+    this.recentPosts = res.data;
+  }
+
 }
