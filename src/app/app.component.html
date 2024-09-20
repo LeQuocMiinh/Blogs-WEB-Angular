@@ -5,11 +5,16 @@
     </div>
     <div class="app-body" style="margin-top: 55px;">
       <div class="container">
-        <router-outlet></router-outlet>
+        <router-outlet>
+
+        </router-outlet>
       </div>
+
     </div>
     <div class="footer">
       <app-footer></app-footer>
     </div>
   </div>
+
 </div>
+<button class="gototop" *ngIf="isShow" (click)="gotoTop()">👆</button>

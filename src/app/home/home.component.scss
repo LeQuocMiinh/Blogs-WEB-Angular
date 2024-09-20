@@ -1,4 +1,6 @@
 .home {
+    margin-top: 24px;
+
     .all-post {
         .post {
             height: 135px;
@@ -13,5 +15,21 @@
             }
         }
 
+    }
+}
+
+.see-all {
+    border: 1px solid #c0c0c0;
+    outline: none;
+    border-radius: 20px;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    padding: 8px 12px;
+    font-weight: 500;
+
+    &:hover,
+    &:focus {
+        transition: all .3s ease-in-out;
+        background: #dfdfdf;
+        box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
     }
 }

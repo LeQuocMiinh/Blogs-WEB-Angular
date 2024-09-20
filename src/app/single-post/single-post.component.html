@@ -1,0 +1,78 @@
+<div class="single-post">
+    <div class="jumbotron jumbotron-fluid mb-3 pl-0 pt-0 pb-0 bg-white position-relative">
+        <div class="h-100 tofront">
+            <div class="row justify-content-between">
+                <div class="col-md-6 pt-3 pb-6 pr-6 align-self-center">
+
+                    <h1 class="display-4 secondfont mb-3 font-weight-bold">{{postDetail?.title}}</h1>
+                    <p class="mb-3">
+                        {{postDetail?.description}}
+                    </p>
+                    <div class="btn btn-secondary">
+                        <i class='bx bx-calendar'></i>
+                        <span>{{postDetail?.createdAt | date: 'dd/MM/yyyy'}}</span>
+                    </div>
+                    <div class="ml-2 btn btn-info" (click)="share()">
+                        <i class='bx bx-share'></i>
+                        <span>Chia sẻ</span>
+                    </div>
+                </div>
+                <div class="col-md-6 pr-0">
+                    <img class="h-100" style="object-fit: cover;" [src]="postDetail?.image">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="pt-4 pb-4">
+        <div class="row justify-content-center">
+
+            <div class="col-md-12 col-lg-12">
+                <article class="article-post" [innerHTML]="postDetail?.content">
+                </article>
+            </div>
+        </div>
+    </div>
+
+    <div class="pt-4 pb-4">
+        <h5 class="font-weight-bold spanborder mb-3"><span>Bài viết tiếp theo</span></h5>
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="card border-0 mb-4 box-shadow h-xl-300" (click)="navigate('/post',postsListNext[0]?._id)"
+                    style="cursor: pointer;">
+                    <img [src]="postsListNext[0]?.image" alt="">
+                    <div class="card-body px-0 pb-0 d-flex flex-column align-items-start">
+                        <h2 class="h4 font-weight-bold">
+                            <a class="text-dark text-2-line">{{postsListNext[0]?.title}}</a>
+                        </h2>
+                        <p class="card-text text-3-line">
+                            {{postsListNext[0]?.description}}
+                        </p>
+                        <div>
+                            <small class="d-block">{{postsListNext[0]?.createdAt | date: 'dd/MM/yyyy'}}</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="flex-md-row mb-4 box-shadow h-xl-300" style="cursor: pointer;">
+                    <div *ngFor="let item of postsListNextRandom" (click)="navigate('/post',item?._id)"
+                        class="mb-3 d-flex align-items-center">
+                        <div class="image flex-shrink-0" style="width: 120px; height: 80px;">
+                            <img style="width: 100%; height: 100%; object-fit: cover; object-position: center;"
+                                [src]="item?.image || imageDefault">
+                        </div>
+                        <div class="pl-3">
+                            <h2 class="mb-2 h6 font-weight-bold">
+                                <a class="text-dark text-1-line">{{item?.title}}</a>
+                            </h2>
+                            <div class="card-text text-muted small text-1-line">
+                                {{item?.description}}
+                            </div>
+                            <small class="text-muted">{{item?.createdAt | date: 'dd/MM/yyyy'}}</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

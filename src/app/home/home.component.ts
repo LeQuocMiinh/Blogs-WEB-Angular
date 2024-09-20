@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { HomeService } from './home.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -8,11 +9,14 @@ import { HomeService } from './home.service';
   providers: [HomeService]
 })
 export class HomeComponent {
-  posts: any[] = [];
+  postsAll: any[] = [];
   recentPosts: any[] = [];
   imageDefault = 'assets/img/default.jpg';
+  recentPostsRandom: any[] = [];
+  ranked: any;
   constructor(
-    private homeService: HomeService
+    private homeService: HomeService,
+    public router: Router
   ) {
 
   }
@@ -28,16 +32,27 @@ export class HomeComponent {
   async getPostByFilter() {
     const params = { deleted: true };
     const res: any = await this.homeService.getAllPosts(params);
-    this.posts = res.data;
+    this.postsAll = res.data.filter((e: any) => e.status == 'published').slice(0, 5);
   }
 
   /**
    * Lấy bài viết mới nhất
    */
   async getRecentPosts() {
-    const params = { nums: 4 };
+    const params = { nums: 6 };
     const res: any = await this.homeService.getRecentPosts(params);
-    this.recentPosts = res.data;
+    this.recentPosts = res.data.filter((e: any) => e.status == 'published');
+    this.ranked = this.recentPosts.slice(0, 4).sort((a, b) => b.views - a.views);
+    this.recentPostsRandom = this.recentPosts.slice(2).sort(() => Math.random() - 0.5);
+  }
+
+  /**
+   * Chuyển hướng 
+   * @param redirect 
+   * @param id 
+   */
+  navigate(redirect: string, id: string) {
+    this.router.navigate([redirect + '/' + id]);
   }
 
 }
