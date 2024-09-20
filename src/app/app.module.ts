@@ -7,7 +7,7 @@ import { HeaderComponent } from 'src/components/header/header.component';
 import { FooterComponent } from 'src/components/footer/footer.component';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { AuthInterceptor } from 'src/libs/auth.interceptor';
-
+import { ScrollTopModule } from 'primeng/scrolltop';
 @NgModule({
   declarations: [
     AppComponent,
@@ -17,7 +17,7 @@ import { AuthInterceptor } from 'src/libs/auth.interceptor';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }

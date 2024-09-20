@@ -12,6 +12,10 @@ const routes: Routes = [
     loadChildren: () => import('./auth/auth.module').then(m => m.AuthModule),
   },
   {
+    path: 'post/:id',
+    loadChildren: () => import('./single-post/single-post.module').then(m => m.SinglePostModule)
+  },
+  {
     path: '',
     redirectTo: 'auth',
     pathMatch: 'full',

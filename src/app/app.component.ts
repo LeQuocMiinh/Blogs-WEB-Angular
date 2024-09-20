@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
 import { AppService } from './app.service';
 import { AppStorage } from 'src/libs/storage';
 import { AuthService } from './auth/auth.service';
@@ -15,7 +15,8 @@ export class AppComponent {
   categoryMenu: any[] = [];
   title = 'Blogs-WEB-Angular';
   storage: AppStorage = new AppStorage();
-
+  isShow: boolean = false;
+  topPosToStartShowing = 100;
   constructor(
     public appService: AppService,
     public authService: AuthService,
@@ -51,6 +52,26 @@ export class AppComponent {
         this.router.navigate(['/auth']);
       }
     );
+  }
+
+
+  @HostListener('window:scroll')
+  checkScroll() {
+    const scrollPosition = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
+
+    if (scrollPosition >= this.topPosToStartShowing) {
+      this.isShow = true;
+    } else {
+      this.isShow = false;
+    }
+  }
+
+  gotoTop() {
+    window.scroll({
+      top: 0,
+      left: 0,
+      behavior: 'smooth'
+    });
   }
 
 }
